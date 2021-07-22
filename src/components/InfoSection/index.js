@@ -1,7 +1,6 @@
 import React from 'react'
-import { Button } from '../ButtonElement'
-import { InfoContainer, InfoRow, InfoWrapper ,TextWrapper,Heading, SubTitle, BtnWrap, Column1, TopLine, Column2, ImgWrap, Img} from './InfoElements'
-const InfoSection = ({lightText,lightBg,id,alt,img,lightTextDesc,description,buttonLabel,headLine,topLine,imgStart,primary,dark,dark2,darkText}) => {
+import { InfoContainer, InfoRow, InfoWrapper ,TextWrapper,Heading, SubTitle, SubFotfTitle, Column1, TopLine, Column2, ImgWrap, Img} from './InfoElements'
+const InfoSection = ({lightText,lightBg,id,alt,img,description,headLine,topLine,imgStart,darkText}) => {
     return (
         <>
             <InfoContainer lightBg={lightBg} id={id}>
@@ -11,19 +10,14 @@ const InfoSection = ({lightText,lightBg,id,alt,img,lightTextDesc,description,but
                             <TextWrapper>
                                 <TopLine>{topLine}</TopLine>
                                 <Heading lightText={lightText}>{headLine}</Heading>
-                                <SubTitle darkText={darkText}>{description}</SubTitle>
-                                <BtnWrap>
-                                    <Button to="home"
-                                        smooth={true}
-                                        duration={500}
-                                        spy={true}
-                                        exact={true}
-                                        offset={-80}
-                                        primary={primary ? 1: 0}
-                                        dark={dark ? 1: 0}
-                                        
-                                    >{buttonLabel}</Button>
-                                </BtnWrap>
+                                <SubTitle darkText={darkText}>
+                                    {description}
+                                
+                                    <span>
+                                    {(id === "fotf") ? (<SubFotfTitle href="https://freshoffthefield.wixsite.com/fotf"> Visit FOTF!</SubFotfTitle>) : (null)}
+                                    </span>
+                                </SubTitle>
+                                
                             </TextWrapper>
                         </Column1>
                         <Column2>

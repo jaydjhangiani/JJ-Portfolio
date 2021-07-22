@@ -3,7 +3,7 @@ import { MobileIcon, Nav, NavbarContainer, NavBtn, NavBtnLink,  NavItem, NavLink
 import {FaBars} from 'react-icons/fa'
 import {IconContext} from 'react-icons/lib'
 import {animateScroll as scroll} from 'react-scroll'
-import Logo from '../../images/jxos.webp'
+// import Logo from '../../images/jxos.webp'
 const Navbar = ({toggle}) => {
     const [scrollNav, setScrollNav] = useState(false)
 
@@ -42,23 +42,23 @@ const Navbar = ({toggle}) => {
                             </NavLinks>
                         </NavItem>
                         <NavItem>
-                            <NavLinks to='discover' smooth={true} duration={500} spy={true} exact='true' offset={-80}>
-                                Discover
+                            <NavLinks to='webdev' smooth={true} duration={500} spy={true} exact='true' offset={-80}>
+                                Web Dev
                             </NavLinks>
                         </NavItem>
                         <NavItem>
                             <NavLinks to='services' smooth={true} duration={500} spy={true} exact='true' offset={-80}>
-                                Services
+                                My Work
                             </NavLinks>
                         </NavItem>
                         <NavItem>
-                            <NavLinks to='signup' smooth={true} duration={500} spy={true} exact='true' offset={-80}>
-                                Sign Up
+                            <NavLinks to='fotf' smooth={true} duration={500} spy={true} exact='true' offset={-80}>
+                                FOTF
                             </NavLinks>
                         </NavItem>
                     </NavMenu>
                     <NavBtn>
-                        <NavBtnLink to="/signin">Sign In</NavBtnLink>
+                        <NavBtnLink to="/contact">Contact</NavBtnLink>
                     </NavBtn>
                 </NavbarContainer>
             </Nav>

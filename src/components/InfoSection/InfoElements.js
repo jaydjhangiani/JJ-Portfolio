@@ -77,6 +77,16 @@ export const SubTitle = styled.p`
     line-height: 24px;
     color: ${({darkText}) => (darkText ?  '#010606' : '#fff')};
 `
+export const SubFotfTitle = styled.a`
+    max-width: 440px;
+    margin-bottom: 35px;
+    font-size: 18px;
+    line-height: 24px;
+    padding-top : 5px;
+    color: #01bf71 ;
+    text-decoration: none;
+`
+
 export const BtnWrap = styled.div`
     display: flex;
     justify-content: flex-start;
