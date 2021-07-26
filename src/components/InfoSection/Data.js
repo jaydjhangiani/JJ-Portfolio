@@ -4,7 +4,7 @@ export const homeObjOne = {
     lightText: true,
     topLine: 'About Me',
     headLine: "Hi, I'm Jay!",
-    description: "A result oriented final year student, pursuing computer engineering with a keen interest in aviation and the public health sector. My aim is to solve crucial problems through tech by striking a balance between critical and creative thinking.",
+    description: "A result oriented, computer engineering graduate with a keen interest in aviation and the public health sector. My aim is to solve crucial problems through tech by striking a balance between critical and creative thinking.",
     imgStart: false,
     img: '/images/svg-1.svg',
     alt: 'analysis',
