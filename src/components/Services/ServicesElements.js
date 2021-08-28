@@ -26,7 +26,7 @@ export const ServicesWrapper = styled.div`
   justify-content: center;
 `;
 
-export const ServicesCard = styled.div`
+export const ServicesCard = styled.a`
   background: #fff;
   height: 320px;
   width: 300px;
@@ -35,15 +35,24 @@ export const ServicesCard = styled.div`
   justify-content: flex-start;
   align-items: center;
   border-radius: 10px;
+  text-decoration: none;
   /* max-height: 340px; */
+  color: black;
   padding: 30px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease-in-out;
+
+  &:focus,
+  &:active {
+    text-decoration: none;
+    color: inherit;
+  }
 
   &:hover {
     transform: scale(1.02);
     transition: all 0.2s ease-in-out;
     cursor: pointer;
+    text-decoration: none;
   }
 
   @media screen and (max-width: 950px) {
