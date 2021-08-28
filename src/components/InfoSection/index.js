@@ -39,8 +39,10 @@ const InfoSection = ({
 
                   <span>
                     {id === "fotf" ? (
-                      <SubFotfTitle href="https://freshoffthefield.wixsite.com/fotf">
-                        {" "}
+                      <SubFotfTitle
+                        href="https://open.spotify.com/show/73tXi4B91y25NlV4DnzFHP?si=FZbcWEC3RVusgpwoRQzayA&dl_branch=1"
+                        rel="noopener noreferrer"
+                      >
                         Visit FOTF!
                       </SubFotfTitle>
                     ) : null}
