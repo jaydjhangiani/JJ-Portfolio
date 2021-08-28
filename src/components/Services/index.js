@@ -8,11 +8,7 @@ import {
   ServicesWrapper,
   ServicesP,
 } from "./ServicesElements";
-import Icon1 from "../../assets/images/jxos.webp";
-import Icon2 from "../../assets/images/jays-arcade.jpeg";
-import Icon3 from "../../assets/images/releaf.jpg";
-import Icon4 from "../../assets/images/pitstop.png";
-import Icon5 from "../../assets/images/vibebase.png";
+import { serviceData } from "./serviceData";
 
 const Services = () => {
   return (
@@ -20,39 +16,18 @@ const Services = () => {
       <ServicesContainer id="services">
         <ServicesH1>My Work</ServicesH1>
         <ServicesWrapper>
-          <ServicesCard target="_blank" href="https://jxos.netlify.app">
-            <ServicesIcon src={Icon1} />
-            <ServicesH2>JXOS</ServicesH2>
-            <ServicesP>
-              Digital Marketing and Web Development Start Up.
-            </ServicesP>
-          </ServicesCard>
-          <ServicesCard target="_blank" href="https://jaysarcade.netlify.app">
-            <ServicesIcon src={Icon2} />
-            <ServicesH2>Jay's Arcade</ServicesH2>
-            <ServicesP>A Retro Gaming Portal.</ServicesP>
-          </ServicesCard>
-          <ServicesCard target="_blank" href="https://help-releaf.web.app">
-            <ServicesIcon src={Icon3} />
-            <ServicesH2>Releaf</ServicesH2>
-            <ServicesP>The Mental Health Platform.</ServicesP>
-          </ServicesCard>
-          <ServicesCard
-            target="_blank"
-            href="https://github.com/jaydjhangiani/The-Pit-Stop"
-          >
-            <ServicesIcon src={Icon4} />
-            <ServicesH2>The Pit Stop</ServicesH2>
-            <ServicesP>Collaborative Resource Sharing Platform.</ServicesP>
-          </ServicesCard>
-          <ServicesCard
-            target="_blank"
-            href="https://github.com/jaydjhangiani/VibeBase"
-          >
-            <ServicesIcon src={Icon5} />
-            <ServicesH2>VibeBase</ServicesH2>
-            <ServicesP>A Spotify Based Houseparty App.</ServicesP>
-          </ServicesCard>
+          {serviceData.map((item, index) => (
+            <ServicesCard
+              key={index}
+              target="_blank"
+              href={item.link}
+              rel="noopener noreferrer"
+            >
+              <ServicesIcon src={item.img} alt={item.title} />
+              <ServicesH2>{item.title}</ServicesH2>
+              <ServicesP>{item.desc}</ServicesP>
+            </ServicesCard>
+          ))}
         </ServicesWrapper>
       </ServicesContainer>
     </>
