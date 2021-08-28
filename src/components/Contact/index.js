@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
+import emailjs from "emailjs-com";
+import { toast } from "react-toastify";
 import { Container, Grid, makeStyles } from "@material-ui/core";
 import {
   ScreenContainer,
@@ -16,6 +19,8 @@ import FormWrapper from "../Form/FormWrapper";
 import purposeData from "../../assets/data/PurposeData.json";
 import countryCode from "../../assets/data/CountryCode.json";
 import occupationData from "../../assets/data/OccupationData.json";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 
 const useStyles = makeStyles((theme) => ({
   formWrapper: {
@@ -34,6 +39,7 @@ const INITIAL_FORM_STATE = {
   countryCode: "",
   phone: "",
   occupation: "",
+  purpose: "",
   company: "",
   message: "",
 };
@@ -51,6 +57,7 @@ const FORM_VALIDATION = Yup.object().shape({
     .typeError("Please enter a valid phone number.")
     .required("Required."),
   occupation: Yup.string().required("Required."),
+  purpose: Yup.string().required("Required."),
   company: Yup.string(),
   message: Yup.string(),
 });
@@ -79,45 +86,61 @@ const ContactSection = () => {
     getWindowDimensions()
   );
 
-  const contactHandler = (values) => {
+  const contactHandler = async (values) => {
     console.log(values);
-    // const config = {
-    // 	header: {
-    // 		'Content-Type': 'application/json',
-    // 	},
-    // }
+    const config = {
+      header: {
+        "Content-Type": "application/json",
+      },
+    };
 
-    // const contactData = {
-    // 	email: values.email,
-    // 	firstName: values.firstName,
-    // }
+    const contactData = {
+      firstName: values.firstName,
+      lastName: values.lastName,
+      email: values.email,
+      phoneNumber: `+${values.countryCode}${values.phone}`,
+      occupation: values.occupation,
+      companyName: values.company,
+      purpose: values.purpose,
+      message: values.message,
+    };
 
-    // db.collection('contact')
-    // 	.add({
-    // 		firstName: values.firstName,
-    // 		lastName: values.lastName,
-    // 		email: values.email,
-    // 		phoneNumber: `+${values.countryCode}${values.phone}`,
-    // 		occupation: values.occupation,
-    // 		companyName: values.company,
-    // 		purpose: values.purpose,
-    // 		message: values.message,
-    // 		timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    // 	})
-    // 	.catch(err => {
-    // 		toast.error('Something went wrong!')
-    // 	})
+    try {
+      await axios.post(
+        `${process.env.REACT_APP_URI}/api/contact`,
+        contactData,
+        config
+      );
 
-    // try {
-    // 	await axios.post(
-    // 		`${process.env.REACT_APP_URI}/api/contact`,
-    // 		contactData,
-    // 		config
-    // 	)
-    // 	toast.success(`Thanks! Email  has been sent to ${values.email}`)
-    // } catch (error) {
-    // 	toast.error(error.response.data.error)
-    // }
+      const emailData = {
+        from_name: `${values.firstName} ${values.lastName}`,
+        phoneNumber: `+${values.countryCode}${values.phone}`,
+        occupation: values.occupation,
+        purpose: values.purpose,
+        message: values.message,
+      };
+
+      console.log(emailData);
+      emailjs
+        .send(
+          process.env.REACT_APP_SERVICE_ID,
+          process.env.REACT_APP_TEMPLATE_ID,
+          emailData,
+          process.env.REACT_APP_USER_ID
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        );
+      toast.success("Thanks for getting in touch!");
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.error);
+    }
   };
   return (
     <ScreenContainer>
@@ -206,6 +229,7 @@ const ContactSection = () => {
                               <Select
                                 name="purpose"
                                 label="Purpose"
+                                required={true}
                                 options={purposeData}
                               />
                             </Grid>
