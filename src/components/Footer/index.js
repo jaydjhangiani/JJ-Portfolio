@@ -26,7 +26,7 @@ const Footer = () => {
               Jay Jhangiani
             </SocialLogo>
             <WebsiteRights>
-              Jay Jhangiani © {new Date().getFullYear()} All rights reserved.{" "}
+              Jay Jhangiani {new Date().getFullYear()} All rights reserved.{" "}
             </WebsiteRights>
             <SocialIcons>
               <SocialIconLink
