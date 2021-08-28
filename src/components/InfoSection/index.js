@@ -42,6 +42,7 @@ const InfoSection = ({
                       <SubFotfTitle
                         href="https://open.spotify.com/show/73tXi4B91y25NlV4DnzFHP?si=FZbcWEC3RVusgpwoRQzayA&dl_branch=1"
                         rel="noopener noreferrer"
+                        target="_blank"
                       >
                         Visit FOTF!
                       </SubFotfTitle>
