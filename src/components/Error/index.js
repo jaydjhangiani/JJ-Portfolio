@@ -10,7 +10,7 @@ const ErrorSection = () => {
       <FormWrap>
         <Icon to="/">Jay Jhangiani</Icon>
         <FormContent>
-          <img src={NotFound} />
+          <img src={NotFound} alt="Error" />
         </FormContent>
       </FormWrap>
     </ScreenContainer>
